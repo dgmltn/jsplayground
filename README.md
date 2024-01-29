@@ -1,6 +1,6 @@
 Proof of concept that allows executing javascript code at runtime.
 
-TODO: finish `QuickJs.attachHelpers()` in ziplineExt
+TODO: finish `QuickJs.attachHelpers()` in [ziplineExt](/composeApp/src/commonMain/kotlin/util/ziplineExt.kt)
 
 Several ideas for "helpers":
 
