@@ -7,6 +7,7 @@ import app.cash.zipline.Zipline
 import zipline.JsHelpers
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
+import util.attachHelpers
 import util.use
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
@@ -19,6 +20,7 @@ class ZiplineWrapper(private val helpers: JsHelpers, private val dispatcher: Cor
             suspendCoroutine { continuation ->
                 val zipline = Zipline.create(dispatcher)
                 zipline.quickJs.use { context ->
+                    context.attachHelpers(helpers)
                     val result = try {
                         val compiled = context.evaluate(js, "script.js")
                         compiled.toString()
@@ -29,22 +31,6 @@ class ZiplineWrapper(private val helpers: JsHelpers, private val dispatcher: Cor
                 }
             }
         }
-
-//
-//    @OptIn(EngineApi::class)
-//    fun app.cash.zipline.QuickJs.attachHelpers(helpers: JsHelpers) {
-//        createNewJSObject().run {
-//            setProperty("requestJson") { args ->
-//                helpers.requestJson(args[0] as String)
-//            }
-//
-//            setProperty("gps") {
-//                helpers.gps()
-//            }
-//
-//            globalObject.setProperty("kml", this)
-//        }
-//    }
 
     companion object {
         val FIB_CODE = """
