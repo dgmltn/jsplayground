@@ -1,0 +1,63 @@
+[versions]
+agp = "8.1.4"
+kotlin = "1.9.21"
+
+android-compileSdk = "34"
+android-minSdk = "24"
+android-targetSdk = "34"
+
+androidx-appcompat = "1.6.1"
+androidx-core-ktx = "1.12.0"
+androidx-material3 = "1.11.0"
+
+# Compose
+composeBom = "2024.01.00"
+compose = "1.6.0"
+compose-plugin = "1.5.11"
+androidx-activityCompose = "1.8.2"
+
+# Ktor
+# https://ktor.io
+# https://github.com/ktorio/ktor/releases
+ktor = "2.3.7"
+
+# Kermit Logging
+# https://github.com/touchlab/Kermit
+kermit = "2.0.2"
+
+# https://github.com/cashapp/zipline
+zipline = "1.8.0"
+
+# https://github.com/SnipMeDev/KodeView
+kodeview = "0.8.0"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core-ktx" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidx-appcompat" }
+
+compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
+compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
+compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
+
+# Ktor
+ktor = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktorCio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
+ktorSerializationJson = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktorContentNegotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktorOkhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
+
+# Zipline
+zipline = { module = "app.cash.zipline:zipline", version.ref = "zipline" }
+
+kodeview = { module = "dev.snipme:kodeview", version.ref = "kodeview" }
+kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
+jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+
+[bundles]
+ktor = ["ktor", "ktorCio", "ktorSerializationJson", "ktorContentNegotiation"]
