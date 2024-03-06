@@ -4,8 +4,8 @@ import ui.App
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import zipline.JsHelpers
-import zipline.ZiplineWrapper
+import qjs.JsHelpers
+import qjs.QuickJsWrapper
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.HttpTimeout
@@ -29,13 +29,13 @@ class MainActivity : ComponentActivity() {
 
     private val helpers by lazy { JsHelpers(httpClient) }
 
-    private val ziplineWrapper = ZiplineWrapper(helpers, Dispatchers.IO)
+    private val quickJsWrapper = QuickJsWrapper(helpers, Dispatchers.IO)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContent {
-            App(ziplineWrapper)
+            App(quickJsWrapper)
         }
     }
 }

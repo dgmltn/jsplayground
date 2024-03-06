@@ -7,19 +7,19 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import getPlatform
-import zipline.ZiplineWrapper
+import qjs.QuickJsWrapper
 import kotlinx.coroutines.launch
 
 @Composable
-fun App(ziplineWrapper: ZiplineWrapper) {
+fun App(quickJsWrapper: QuickJsWrapper) {
     var result by remember { mutableStateOf("") }
-    var code by remember { mutableStateOf(ZiplineWrapper.FIB_CODE) }
+    var code by remember { mutableStateOf(QuickJsWrapper.DICTIONARY_API_CODE) }
     val scope = rememberCoroutineScope()
     val platform = remember { getPlatform() }
 
     val onRun = fun() {
         scope.launch {
-            result = ziplineWrapper.evaluateJs(code)
+            result = quickJsWrapper.evaluateJs(code)
         }
     }
 

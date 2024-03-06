@@ -5,11 +5,10 @@ import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.serialization.kotlinx.json.json
-import kotlinx.coroutines.Dispatchers
 import kotlinx.serialization.json.Json
 import ui.App
-import zipline.JsHelpers
-import zipline.ZiplineWrapper
+import qjs.JsHelpers
+import qjs.QuickJsWrapper
 
 fun main() {
 
@@ -26,11 +25,11 @@ fun main() {
 
     val helpers by lazy { JsHelpers(httpClient) }
 
-    val ziplineWrapper = ZiplineWrapper(helpers, Dispatchers.IO)
+    val quickJsWrapper = QuickJsWrapper(helpers)
 
     application {
         Window(onCloseRequest = ::exitApplication, title = "jsplayground") {
-            App(ziplineWrapper)
+            App(quickJsWrapper)
         }
     }
 }

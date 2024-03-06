@@ -16,12 +16,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -29,20 +27,22 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import zipline.ZiplineWrapper.Companion.DAD_JOKE_CODE
-import zipline.ZiplineWrapper.Companion.FIB_CODE
-import zipline.ZiplineWrapper.Companion.JSON_CODE
-import zipline.ZiplineWrapper.Companion.SUNSET_CODE
-import dev.snipme.highlights.Highlights
-import dev.snipme.highlights.model.SyntaxLanguage
-import dev.snipme.highlights.model.SyntaxThemes
-import dev.snipme.kodeview.view.material3.CodeEditText
+import qjs.QuickJsWrapper.Companion.DAD_JOKE_CODE
+import qjs.QuickJsWrapper.Companion.DICTIONARY_API_CODE
+import qjs.QuickJsWrapper.Companion.FIB_CODE
+import qjs.QuickJsWrapper.Companion.JSON_CODE
+import qjs.QuickJsWrapper.Companion.MODULE_CODE
+import qjs.QuickJsWrapper.Companion.PROMISE_CODE
+import qjs.QuickJsWrapper.Companion.SUNSET_CODE
 
 private val TEMPLATES = listOf(
+    "Module Test" to MODULE_CODE,
     "Fibonacci(10)" to FIB_CODE,
     "Json('result')" to JSON_CODE,
     "Dad Joke" to DAD_JOKE_CODE,
+    "Promised Dad Joke" to PROMISE_CODE,
     "Sunset" to SUNSET_CODE,
+    "Dictionary API" to DICTIONARY_API_CODE,
 )
 
 @OptIn(ExperimentalMaterial3Api::class)

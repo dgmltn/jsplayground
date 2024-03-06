@@ -1,6 +1,6 @@
 [versions]
-agp = "8.1.4"
-kotlin = "1.9.21"
+agp = "8.2.2"
+kotlin = "1.9.22"
 
 android-compileSdk = "34"
 android-minSdk = "24"
@@ -8,25 +8,24 @@ android-targetSdk = "34"
 
 androidx-appcompat = "1.6.1"
 androidx-core-ktx = "1.12.0"
-androidx-material3 = "1.11.0"
 
 # Compose
-composeBom = "2024.01.00"
-compose = "1.6.0"
-compose-plugin = "1.5.11"
+composeBom = "2024.02.01"
+compose = "1.6.2"
+compose-plugin = "1.6.0"
 androidx-activityCompose = "1.8.2"
 
 # Ktor
 # https://ktor.io
 # https://github.com/ktorio/ktor/releases
-ktor = "2.3.7"
+ktor = "2.3.8"
 
 # Kermit Logging
 # https://github.com/touchlab/Kermit
 kermit = "2.0.2"
 
-# https://github.com/cashapp/zipline
-zipline = "1.8.0"
+# https://github.com/dokar3/quickjs-kt
+quickjsKt = "1.0.0-alpha08"
 
 # https://github.com/SnipMeDev/KodeView
 kodeview = "0.8.0"
@@ -48,7 +47,7 @@ ktorContentNegotiation = { module = "io.ktor:ktor-client-content-negotiation", v
 ktorOkhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
 
 # Zipline
-zipline = { module = "app.cash.zipline:zipline", version.ref = "zipline" }
+quickjsKt = { module = "io.github.dokar3:quickjs-kt", version.ref = "quickjsKt" }
 
 kodeview = { module = "dev.snipme:kodeview", version.ref = "kodeview" }
 kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
