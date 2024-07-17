@@ -1,19 +1,19 @@
 [versions]
-agp = "8.2.2"
-kotlin = "1.9.22"
+agp = "8.4.2"
+kotlin = "2.0.0"
 
 android-compileSdk = "34"
 android-minSdk = "24"
 android-targetSdk = "34"
 
-androidx-appcompat = "1.6.1"
-androidx-core-ktx = "1.12.0"
+androidx-appcompat = "1.7.0"
+androidx-core-ktx = "1.13.1"
 
 # Compose
-composeBom = "2024.02.01"
-compose = "1.6.2"
-compose-plugin = "1.6.0"
-androidx-activityCompose = "1.8.2"
+composeBom = "2024.06.00"
+compose = "1.6.8"
+compose-plugin = "1.6.10"
+androidx-activityCompose = "1.9.0"
 
 # Ktor
 # https://ktor.io
@@ -25,7 +25,7 @@ ktor = "2.3.8"
 kermit = "2.0.2"
 
 # https://github.com/dokar3/quickjs-kt
-quickjsKt = "1.0.0-alpha08"
+quickjsKt = "1.0.0-alpha13"
 
 # https://github.com/SnipMeDev/KodeView
 kodeview = "0.8.0"
@@ -46,7 +46,6 @@ ktorSerializationJson = { module = "io.ktor:ktor-serialization-kotlinx-json", ve
 ktorContentNegotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktorOkhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
 
-# Zipline
 quickjsKt = { module = "io.github.dokar3:quickjs-kt", version.ref = "quickjsKt" }
 
 kodeview = { module = "dev.snipme:kodeview", version.ref = "kodeview" }
@@ -57,6 +56,7 @@ androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 
 [bundles]
 ktor = ["ktor", "ktorCio", "ktorSerializationJson", "ktorContentNegotiation"]

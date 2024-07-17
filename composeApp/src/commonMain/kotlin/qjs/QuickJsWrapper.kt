@@ -2,30 +2,27 @@ package qjs
 
 import com.dokar.quickjs.binding.define
 import com.dokar.quickjs.binding.function
+import com.dokar.quickjs.binding.toJsObject
 import com.dokar.quickjs.quickJs
+import kotlinx.coroutines.delay
 
 class QuickJsWrapper(private val helpers: JsHelpers) {
 
     suspend fun evaluateJs(js: String): String =
         try {
-            var result: Any? = null
-
             quickJs {
-                define<JsHelpers>("host", helpers)
-                function("returns") { result = it.first() }
-
-                val helloModuleCode = """
-                    export function greeting() {
-                        return "Hi from the hello module!";
+                define("host") {
+                    function("log") {
+                        helpers.log(it)
                     }
-                """.trimIndent()
-                val bytecode = compile(
-                    code = helloModuleCode,
-                    filename = "hello",
-                    asModule = true,
-                )
-                addModule(bytecode)
-
+                    asyncFunction("gps") {
+                        delay(1000)
+                        helpers.gps().toJsObject()
+                    }
+                    function("requestJson") { (url) ->
+                        helpers.requestJson(url.toString())
+                    }
+                }
                 evaluate<Any?>(js).toString()
             }
         }
@@ -34,13 +31,9 @@ class QuickJsWrapper(private val helpers: JsHelpers) {
         }
 
     companion object {
-        val MODULE_CODE = """
-            import * as hello from "hello";
-            returns(hello.greeting());
-        """.trimIndent()
-
         val FIB_CODE = """
             function fibonacci(n) {
+              host.log(n);
               if (n == 0 || n == 1) return n;
               return fibonacci(n - 1) + fibonacci(n - 2);
             }
@@ -68,13 +61,17 @@ class QuickJsWrapper(private val helpers: JsHelpers) {
         """.trimIndent()
 
         val SUNSET_CODE = """
-            let gps = JSON.parse(host.gps());
-            let url = 'https://aa.usno.navy.mil/api/rstt/oneday?date=2024-01-22&coords=' + gps.lat + ',' + gps.lng + '&tz=-8.0&dst=true';
-            let response = host.requestJson(url);
-            let parsed = JSON.parse(response);
-            let sundata = parsed.properties.data.sundata;
-            let result = 'sun ' + sundata[3].phen + ': ' + sundata[3].time;
-            result;
+let gps = await host.gps();
+let date = new Date();
+let tz = -date.getTimezoneOffset() / 60; 
+let dateStr = date.toISOString().slice(0, 10);
+let url = 'https://aa.usno.navy.mil/api/rstt/oneday?date=' + dateStr + '&coords=' + gps.lat + ',' + gps.lng + '&tz=' + tz +'&dst=true';
+let response = host.requestJson(url);
+let parsed = JSON.parse(response);
+let sundata = parsed.properties.data.sundata;
+let sunset = sundata.find(it => it.phen == "Set");
+let result = 'sunset:' + sunset.time;
+result;
         """.trimIndent()
 
         val DICTIONARY_API_CODE = """

@@ -31,12 +31,10 @@ import qjs.QuickJsWrapper.Companion.DAD_JOKE_CODE
 import qjs.QuickJsWrapper.Companion.DICTIONARY_API_CODE
 import qjs.QuickJsWrapper.Companion.FIB_CODE
 import qjs.QuickJsWrapper.Companion.JSON_CODE
-import qjs.QuickJsWrapper.Companion.MODULE_CODE
 import qjs.QuickJsWrapper.Companion.PROMISE_CODE
 import qjs.QuickJsWrapper.Companion.SUNSET_CODE
 
 private val TEMPLATES = listOf(
-    "Module Test" to MODULE_CODE,
     "Fibonacci(10)" to FIB_CODE,
     "Json('result')" to JSON_CODE,
     "Dad Joke" to DAD_JOKE_CODE,

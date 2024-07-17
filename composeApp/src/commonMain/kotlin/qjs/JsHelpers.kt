@@ -12,8 +12,8 @@ class JsHelpers(private val httpClient: HttpClient) {
         Logger.e { args.joinToString(" ") }
     }
 
-    fun gps(): String {
-        return "{\"lat\":32.7153, \"lng\":-117.1573}"
+    fun gps(): Map<String, Float> {
+        return mapOf("lat" to 32.7153f, "lng" to -117.1573f)
     }
 
     fun delay(delay: Long): Unit =
